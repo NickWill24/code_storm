@@ -13,10 +13,12 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const Form = (props) => {
-  // const { title, description, stack } = props.ideaState.newIdea
-  // const { ideas } = props.ideaState
+  const { title, description, stack } = props.ideaState.newIdea
+  const { ideas } = props.ideaState
 
-  const handleChange = (e) => {}
+  const handleChange = (e) => {
+    props.newIdeaInput(e.target.name, e.target.value)
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
   }
