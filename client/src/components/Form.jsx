@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { IdeaInput, AddIdea } from '../store/actions/IdeaInput'
+import StackList from './StackList'
 
 const mapStateToProps = (state) => {
   return { ideaState: state.ideaState }
@@ -7,33 +9,34 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    newIdeaInput: () => dispatch(),
-    postIdea: () => dispatch()
+    newIdeaInput: (inputName, inputValue) =>
+      dispatch(IdeaInput(inputName, inputValue)),
+    postIdea: (input) => dispatch(AddIdea(input))
   }
 }
 
 const Form = (props) => {
-  const { title, description, stack } = props.ideaState.newIdea
-  const { ideas } = props.ideaState
+  const { title, description, stack } = props.ideaState
 
   const handleChange = (e) => {
     props.newIdeaInput(e.target.name, e.target.value)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+    props.postIdea(props.ideaState.newIdea)
   }
 
   return (
     <div>
       <h3>Form</h3>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label>Project title</label>
           <input
             type="text"
             name="title"
-            value={props.title}
-            onChange={(e) => props.handleChange(e)}
+            value={title}
+            onChange={(e) => handleChange(e)}
             placeholder="Cool fullstack project name"
           />
         </div>
@@ -42,79 +45,12 @@ const Form = (props) => {
           <textarea
             type="text"
             name="description"
-            value={props.description}
-            onChange={(e) => props.handleChange(e)}
+            value={description}
+            onChange={(e) => handleChange(e)}
             placeholder="An app for upvoting user submitted fullstack ideas"
           />
         </div>
-        <div>
-          <p>Stack</p>
-          <div>
-            <label>MERN</label>
-            <input
-              type="checkbox"
-              name="MERN"
-              value={props.description}
-              onChange={(e) => props.handleChange(e)}
-            />
-          </div>
-          <div>
-            <label>PERN</label>
-            <input
-              type="checkbox"
-              name="PERN"
-              value={props.description}
-              onChange={(e) => props.handleChange(e)}
-            />
-          </div>
-          <div>
-            <label>MEAN</label>
-            <input
-              type="checkbox"
-              name="MEAN"
-              value={props.description}
-              onChange={(e) => props.handleChange(e)}
-            />
-          </div>
-
-          <div>
-            <label>MEVN</label>
-            <input
-              type="checkbox"
-              name="MEVN"
-              value={props.description}
-              onChange={(e) => props.handleChange(e)}
-            />
-          </div>
-          <div>
-            <label>LAMP</label>
-            <input
-              type="checkbox"
-              name="LAMP"
-              value={props.description}
-              onChange={(e) => props.handleChange(e)}
-            />
-          </div>
-          <div>
-            <label>Serverless</label>
-            <input
-              type="checkbox"
-              name="LAMP"
-              value={props.description}
-              onChange={(e) => props.handleChange(e)}
-            />
-          </div>
-
-          <div>
-            <label>Python-Django</label>
-            <input
-              type="checkbox"
-              name="Python-Django"
-              value={props.description}
-              onChange={(e) => props.handleChange(e)}
-            />
-          </div>
-        </div>
+        <StackList handleChange={(e) => handleChange(e)} stack={stack} />
 
         <input type="submit" value="+" className="idea__submit" />
       </form>

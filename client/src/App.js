@@ -1,7 +1,8 @@
 import './App.css'
-import { Switch, Route, NavLink } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 import Nav from './components/Nav'
+import Form from './Form'
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
         <Nav />
         <Switch>
           <Route path="/" component={Dashboard} />
+          <Route path="/new" component={Form} />
+          <Route path="/idea/idea_id" component={Form} />
         </Switch>
       </main>
     </div>
