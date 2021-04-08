@@ -2,7 +2,7 @@
 // define istate
 // define reduces
 
-import { GET_IDEAS, ADD_DESCRIPTION, ADD_TITLE, ADD_STACKS, CREATE_IDEA, REMOVE_IDEA, CREATE_IDEA, GET_IDEA, NUMBER_OF_LIKES } from "../types"
+import { GET_IDEAS, ADD_DESCRIPTION, ADD_TITLE, ADD_STACKS, CREATE_IDEA, REMOVE_IDEA, GET_IDEA, NUMBER_OF_LIKES } from "../types"
 
 const iState={
     ideas:[],
