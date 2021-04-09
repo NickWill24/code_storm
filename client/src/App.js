@@ -1,4 +1,4 @@
-import './App.css'
+import './styles/App.css'
 import { Switch, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 import Nav from './components/Nav'

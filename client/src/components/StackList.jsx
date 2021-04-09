@@ -2,7 +2,6 @@ import React from 'react'
 import { MERN, PERN, MEAN, MEVN, LAMP, FLASK_REACT } from './stack_types'
 
 const StackList = (props) => {
-  console.log(props)
   const stackOptions = [MERN, PERN, MEAN, MEVN, LAMP, FLASK_REACT]
 
   const renderStackOptions = () =>

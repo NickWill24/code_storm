@@ -23,11 +23,9 @@ const IdeaDetails = (props) => {
 
   const handleClick = (id) => {
     props.removeIdea(id)
-    console.log(props)
   }
   useEffect(() => {
     props.getIdea(props.ideaState.selectIdea)
-    console.log(props.ideaState.getIdea)
   }, [])
 
   return (
@@ -38,10 +36,10 @@ const IdeaDetails = (props) => {
           <p>{title}</p>
           <p>{description}</p>
           <div>{renderTags()}</div>
-          <NavLink to= '/'>
-          <button onClick={() => handleClick(id)}>
-            Delete This Idea Now
-          </button>
+          <NavLink to="/">
+            <button onClick={() => handleClick(id)}>
+              Delete This Idea Now
+            </button>
           </NavLink>
         </div>
       ) : (

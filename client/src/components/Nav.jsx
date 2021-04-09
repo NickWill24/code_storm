@@ -1,21 +1,21 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import '../styles/App.css'
 
 const Nav = () => {
   return (
-    <div>
+    <nav>
       <ul>
         <NavLink to="/">
-          <li>CODE STORM</li>
+          <li className="logo">
+            CODE <span className="bolt__logo"></span> STORM
+          </li>
         </NavLink>
         <NavLink to="/new">
           <li>Submit an Idea</li>
         </NavLink>
-        <NavLink to="/">
-          <li>Random Idea</li>
-        </NavLink>
       </ul>
-    </div>
+    </nav>
   )
 }
 
