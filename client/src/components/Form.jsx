@@ -15,8 +15,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     newIdeaTitle: (title) => dispatch(addTitle(title)),
-    newIdeaDescription: (title) => dispatch(addDescription(title)),
-    newIdeaStacks: (title) => dispatch(addStacks(title)),
+    newIdeaDescription: (description) => dispatch(addDescription(description)),
+    newIdeaStacks: (stack) => dispatch(addStacks(stack)),
     postIdea: (input) => dispatch(createIdea(input))
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 
 const StackList = (props) => {
+  console.log(props)
   const stackOptions = ['MERN', 'PERN', 'MEAN', 'MEVN', 'LAMP', 'Flask-React']
   const customStackOptions = [
     'Python',
@@ -35,8 +36,8 @@ const StackList = (props) => {
         <label>{stack}</label>
         <input
           type="radio"
-          name="stackSelection"
-          value={props.stack}
+          name="stack"
+          value={stack}
           onChange={(e) => props.handleChange(e)}
         />
       </div>
