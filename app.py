@@ -4,7 +4,9 @@ from flask_migrate import Migrate
 from models.db import db
 from models.idea import Idea
 from resources.idea import Ideas, SingleIdea
+from flask_cors import CORS
 app = Flask(__name__)
+cors = CORS(app)
 api = Api(app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -13,6 +15,8 @@ app.config['SQLALCHEMY_ECHO'] = True
 
 db.init_app(app)
 migrate = Migrate(app,db)
+
+
 
 api.add_resource(Ideas, '/ideas')
 api.add_resource(SingleIdea, '/ideas/<int:id>')
