@@ -28,10 +28,10 @@ class SingleIdea(Resource):
         db.session.commit()
         return{"msg": 'Idea deleted', 'payload': idea.id}
 
-    # def put(self, id):
-    #     idea = Idea.find_by_id(id)
-    #     data = request.get_json()
-    #     for key in data:
-    #         setattr(idea,key,data[key])
-    #     db.session.commit()
-    #     return idea.json()
+    def put(self, id):
+        idea = Idea.find_by_id(id)
+        data = request.get_json()
+        for key in data:
+            setattr(idea,key,data[key])
+        db.session.commit()
+        return idea.json()

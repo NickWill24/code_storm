@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Tag from './Tag'
 import { connect } from 'react-redux'
 import { getIdea, removeIdea } from '../store/actions/IdeaActions'
+import { NavLink } from 'react-router-dom'
 
 const mapStateToProps = (state) => {
   return { ideaState: state.ideaState }
@@ -37,9 +38,11 @@ const IdeaDetails = (props) => {
           <p>{title}</p>
           <p>{description}</p>
           <div>{renderTags()}</div>
+          <NavLink to= '/'>
           <button onClick={() => handleClick(id)}>
             Delete This Idea Now
           </button>
+          </NavLink>
         </div>
       ) : (
         <div>
