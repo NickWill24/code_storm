@@ -23,11 +23,15 @@ CodeStorm is a flask, redux, and react full stack application
 * React 
 * Redux
 
-
+![CodeStorm ERD](images/ERD.png)
+![CodeStorm Component Hierarchy Diagram](images/CHR.png)
 
 ***
 ### ***Future Updates***
-
+- [ ] let user create their own stack tags 
+- [ ] fitler idea by stacks
+- [ ] add comments 
+- [ ] Add auth
 
 
 *** 
