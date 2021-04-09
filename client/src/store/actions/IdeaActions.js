@@ -2,7 +2,8 @@ import {
   CreateIdea,
   GetIdea,
   GetIdeas,
-  RemoveIdea
+  RemoveIdea,
+  numberOfLikes
 } from '../../services/IdeaServices'
 import {
   ADD_TITLE,
@@ -11,7 +12,9 @@ import {
   CREATE_IDEA,
   GET_IDEA,
   GET_IDEAS,
-  REMOVE_IDEA
+  REMOVE_IDEA,
+  SELECT_IDEA,
+  NUMBER_OF_LIKES
 } from '../types'
 
 export const addTitle = (formValues) => ({
@@ -28,6 +31,12 @@ export const addStacks = (formValues) => ({
   type: ADD_STACKS,
   payload: formValues
 })
+
+export const selectIdea = (formValues) => ({
+  type: SELECT_IDEA,
+  payload: formValues
+})
+
 
 export const getIdeas = () => async (dispatch) => {
   try {
@@ -69,5 +78,14 @@ export const removeIdea = (id) => async (dispatch) => {
     })
   } catch (error) {
     throw error
+  }
+}
+export const NumberOfLikes = (id, index) => async (dispatch) => {
+  try {
+    const likes = await numberOfLikes(id)
+    dispatch({ type: NUMBER_OF_LIKES, payload: { id: id, index: index } })
+    return likes
+  } catch (err) {
+    console.log(err)
   }
 }
