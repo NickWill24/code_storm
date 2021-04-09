@@ -1,12 +1,12 @@
 import React from 'react'
 import IdeaList from './IdeaList'
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   return (
     <div>
       <h1>Dashboard</h1>
 
-      <IdeaList />
+      <IdeaList {...props} />
     </div>
   )
 }

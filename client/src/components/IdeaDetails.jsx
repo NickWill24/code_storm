@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Tag from './Tag'
 import { connect } from 'react-redux'
-import { GetIdea, SelectIdea } from '../store/actions/IdeaActions'
+import { getIdea, removeIdea } from '../store/actions/IdeaActions'
 
 const mapStateToProps = (state) => {
   return { ideaState: state.ideaState }
@@ -9,8 +9,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getIdea: () => dispatch(GetIdea()),
-    deleteIdea: (id) => dispatch(SelectIdea(id))
+    getIdea: () => dispatch(getIdea()),
+    deleteIdea: (id) => dispatch(removeIdea(id))
   }
 }
 
@@ -22,7 +22,9 @@ const IdeaDetails = (props) => {
 
   const handleClick = (id) => props.deleteIdea(id)
 
-  // ADD USEFFECT
+  useEffect(() => {
+    props.getIdea()
+  }, [])
 
   return (
     <div>
