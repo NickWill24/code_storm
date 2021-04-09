@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import IdeaCard from './IdeaCard'
 import { connect } from 'react-redux'
 import {
@@ -19,7 +19,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const IdeaList = (props) => {
-  const { ideas } = props.ideaState
+  const { ideas, getIdeas } = props.ideaState
+
+  useEffect(() => {
+    props.getIdeas()
+  }, [props.getIdeas])
 
   const targetIdea = (id) => {
     // SET SELECTED IDEA IN STATE
@@ -50,7 +54,7 @@ const IdeaList = (props) => {
       <p>...no ideas yet!</p>
     )
   }
-  // ADD USEFFECT
+
   return (
     <div>
       <h3>IdeaList</h3>
