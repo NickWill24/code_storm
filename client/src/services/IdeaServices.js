@@ -38,7 +38,7 @@ export const RemoveIdea = async (id) => {
 
 export const numberOfLikes = async (idea_id, likes) => {
   let input = {
-    numberOfLikes: numberOfLikes + 1
+    number_of_like: likes
   }
   try {
     const res = await Client.put(`/ideas/${idea_id}`, input)

@@ -86,10 +86,11 @@ export const removeIdea = (id) => async (dispatch) => {
     throw error
   }
 }
-export const NumberOfLikes = (id, likes) => async (dispatch) => {
+export const NumberOfLikes = (id, likeCount) => async (dispatch) => {
   try {
-    console.log('num likes action id', id, likes)
-    const likes = await numberOfLikes(id, likes)
+    const likes = await numberOfLikes(id, likeCount)
+    console.log('num likes action id', id, likeCount)
+
     dispatch({ type: NUMBER_OF_LIKES, payload: id })
     return likes
   } catch (err) {

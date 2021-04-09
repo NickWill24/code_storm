@@ -37,6 +37,7 @@ const IdeaList = (props) => {
 
   const likeIdea = (id, likes) => {
     // INCREMENT LIKE COUNT
+    likes += 1
     props.incrementLikeCount(id, likes)
   }
 

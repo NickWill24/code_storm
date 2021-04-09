@@ -45,7 +45,7 @@ const IdeaReducers = (state = iState, action) => {
     case NUMBER_OF_LIKES:
       const targetId = state.ideas.filter((idea) => idea.id === action.payload)
       targetId[0].number_of_like++
-      state.ideas.splice(action.payload.index, 1, targetId)
+      //   state.ideas.splice(action.payload.index, 1, targetId)
       return { ...state }
     case SELECT_IDEA:
       return { ...state, selectIdea: action.payload }
