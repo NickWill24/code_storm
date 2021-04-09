@@ -38,7 +38,13 @@ const Form = (props) => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.postIdea(props.ideaState.newIdea)
+    const formValues = {
+      title: props.ideaState.title,
+      description: props.ideaState.description,
+      stacks: props.ideaState.stacks,
+      number_of_like: props.ideaState.numberOfLikes
+    }
+    props.postIdea(formValues)
   }
 
   return (
@@ -65,9 +71,9 @@ const Form = (props) => {
             placeholder="An app for upvoting user submitted fullstack ideas"
           />
         </div>
-        <StackList handleChange={(e) => handleChange(e)} stack={stack} />
+        {/* <StackList handleChange={(e) => handleChange(e)} stack={stack} /> */}
 
-        <input type="submit" value="+" className="idea__submit" />
+        <input type="submit" value="Submit Idea" className="idea__submit" />
       </form>
     </div>
   )
