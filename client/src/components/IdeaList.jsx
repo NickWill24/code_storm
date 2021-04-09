@@ -1,7 +1,10 @@
 import React from 'react'
 import IdeaCard from './IdeaCard'
 import { connect } from 'react-redux'
-import { GetIdeas, SelectIdea, LikeIdea } from '../store/actions'
+import {
+  getIdeas
+  // SelectIdea, LikeIdea
+} from '../store/actions/IdeaActions'
 
 const mapStateToProps = (state) => {
   return { ideaState: state.ideaState }
@@ -9,9 +12,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getIdeas: () => dispatch(GetIdeas()),
-    selectIdea: (id) => dispatch(SelectIdea(id)),
-    incrementLikeCount: (id) => dispatch(LikeIdea(id))
+    getIdeas: () => dispatch(getIdeas())
+    // selectIdea: (id) => dispatch(SelectIdea(id)),
+    // incrementLikeCount: (id) => dispatch(LikeIdea(id))
   }
 }
 
@@ -20,36 +23,38 @@ const IdeaList = (props) => {
 
   const targetIdea = (id) => {
     // SET SELECTED IDEA IN STATE
-    props.selectIdea(id)
+    // props.selectIdea(id)
     // REDIRECT TO IDEA DETAILS PAGE
     props.history.push(`/idea/${id}`)
   }
 
   const likeIdea = (id) => {
     // INCREMENT LIKE COUNT
-    props.incrementLikeCount(id)
+    // props.incrementLikeCount(id)
   }
 
   const renderIdeas = () => {
-    return ideas
-      ? ideas.map((idea, idx) => (
-          <div onClick={() => likeIdea(idea.id)}>
-            <IdeaCard
-              key={idx}
-              title={idea.title}
-              description={idea.description}
-              stack={idea.stack}
-              handleClick={targetIdea}
-            />
-          </div>
-        ))
-      : '...no ideas yet!'
+    return ideas.length > 0 ? (
+      ideas.map((idea, idx) => (
+        <div onClick={() => likeIdea(idea.id)}>
+          <IdeaCard
+            key={idx}
+            title={idea.title}
+            description={idea.description}
+            stack={idea.stack}
+            handleClick={targetIdea}
+          />
+        </div>
+      ))
+    ) : (
+      <p>...no ideas yet!</p>
+    )
   }
   // ADD USEFFECT
   return (
     <div>
       <h3>IdeaList</h3>
-      {ideas ? renderIdeas() : 'No ideas today!'}
+      {renderIdeas()}
     </div>
   )
 }

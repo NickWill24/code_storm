@@ -1,6 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { IdeaInput, AddIdea } from '../store/actions/IdeaInput'
+import {
+  addTitle,
+  addDescription,
+  addStacks,
+  createIdea
+} from '../store/actions/IdeaActions'
 import StackList from './StackList'
 
 const mapStateToProps = (state) => {
@@ -9,9 +14,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    newIdeaInput: (inputName, inputValue) =>
-      dispatch(IdeaInput(inputName, inputValue)),
-    postIdea: (input) => dispatch(AddIdea(input))
+    newIdeaTitle: (title) => dispatch(addTitle(title)),
+    newIdeaDescription: (title) => dispatch(addDescription(title)),
+    newIdeaStacks: (title) => dispatch(addStacks(title)),
+    postIdea: (input) => dispatch(createIdea(input))
   }
 }
 
@@ -19,7 +25,16 @@ const Form = (props) => {
   const { title, description, stack } = props.ideaState
 
   const handleChange = (e) => {
-    props.newIdeaInput(e.target.name, e.target.value)
+    switch (e.target.name) {
+      case 'title':
+        return props.newIdeaTitle(e.target.value)
+      case 'description':
+        return props.newIdeaDescription(e.target.value)
+      case 'stack':
+        return props.newIdeaStacks(e.target.value)
+      default:
+        return
+    }
   }
   const handleSubmit = (e) => {
     e.preventDefault()

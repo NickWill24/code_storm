@@ -1,7 +1,7 @@
 import React from 'react'
 import Tag from './Tag'
 import { connect } from 'react-redux'
-import { GetIdea, SelectIdea } from '../store/actions'
+import { GetIdea, SelectIdea } from '../store/actions/IdeaActions'
 
 const mapStateToProps = (state) => {
   return { ideaState: state.ideaState }
