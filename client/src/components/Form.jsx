@@ -49,32 +49,38 @@ const Form = (props) => {
 
   return (
     <div>
-      <h3>Form</h3>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      {props.ideaState.isSubmited ? (
+        <div>test</div>
+      ) : (
         <div>
-          <label>Project title</label>
-          <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={(e) => handleChange(e)}
-            placeholder="Cool fullstack project name"
-          />
-        </div>
-        <div>
-          <label>Description</label>
-          <textarea
-            type="text"
-            name="description"
-            value={description}
-            onChange={(e) => handleChange(e)}
-            placeholder="An app for upvoting user submitted fullstack ideas"
-          />
-        </div>
-        <StackList handleChange={(e) => handleChange(e)} stack={stacks} />
+          <h3>Form</h3>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <div>
+              <label>Project title</label>
+              <input
+                type="text"
+                name="title"
+                value={title}
+                onChange={(e) => handleChange(e)}
+                placeholder="Cool fullstack project name"
+              />
+            </div>
+            <div>
+              <label>Description</label>
+              <textarea
+                type="text"
+                name="description"
+                value={description}
+                onChange={(e) => handleChange(e)}
+                placeholder="An app for upvoting user submitted fullstack ideas"
+              />
+            </div>
+            <StackList handleChange={(e) => handleChange(e)} stack={stacks} />
 
-        <input type="submit" value="Submit Idea" className="idea__submit" />
-      </form>
+            <input type="submit" value="Submit Idea" className="idea__submit" />
+          </form>
+        </div>
+      )}
     </div>
   )
 }

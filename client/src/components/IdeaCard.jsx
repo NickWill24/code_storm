@@ -9,7 +9,6 @@ import {
   _Python,
   _Django,
   _MongoDB,
-  Postgres,
   _Express,
   _React,
   _Node,
@@ -90,8 +89,7 @@ const IdeaCard = (props) => {
     <div>
       {props ? (
         <div>
-          <h4>IdeaCard</h4>
-          <p>{title}</p>
+          <h3>{title}</h3>
           <p>{description}</p>
           <div>{renderTags()}</div>
           <button onClick={() => handleClick(id)}>View Details</button>
