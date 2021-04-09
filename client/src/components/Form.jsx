@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const Form = (props) => {
-  const { title, description, stack } = props.ideaState
+  const { title, description, stacks } = props.ideaState
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -71,7 +71,7 @@ const Form = (props) => {
             placeholder="An app for upvoting user submitted fullstack ideas"
           />
         </div>
-        {/* <StackList handleChange={(e) => handleChange(e)} stack={stack} /> */}
+        <StackList handleChange={(e) => handleChange(e)} stack={stacks} />
 
         <input type="submit" value="Submit Idea" className="idea__submit" />
       </form>

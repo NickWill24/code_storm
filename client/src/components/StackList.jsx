@@ -1,74 +1,70 @@
 import React from 'react'
 
 const StackList = (props) => {
+  const stackOptions = ['MERN', 'PERN', 'MEAN', 'MEVN', 'LAMP', 'Flask-React']
+  const customStackOptions = [
+    'Python',
+    'Django',
+    'MongoDB',
+    'Postgres',
+    'Express',
+    'React',
+    'Node',
+    'Angular',
+    'Flask',
+    'Linux',
+    'Apache',
+    'MySQL',
+    'PHP',
+    'Vue'
+    // 'Svelte',
+    // 'Nuxt',
+    // 'Next.js',
+    // 'Redux',
+    // 'GraphQL',
+    // 'Apollo Client',
+    // 'MobX',
+    // 'VueX',
+    // 'XState',
+    // 'Nest'
+  ]
+
+  const renderStackOptions = () =>
+    stackOptions.map((stack) => (
+      <div>
+        <label>{stack}</label>
+        <input
+          type="radio"
+          name="stackSelection"
+          value={props.stack}
+          onChange={(e) => props.handleChange(e)}
+        />
+      </div>
+    ))
+
+  const renderCustomStackOptions = () =>
+    customStackOptions.map((stack) => (
+      <div>
+        <label>{stack}</label>
+        <input
+          type="checkbox"
+          name="customStackSelections"
+          value={props.description}
+          onChange={(e) => props.handleChange(e)}
+        />
+      </div>
+    ))
+
   return (
     <div>
-      <p>Stack</p>
       <div>
-        <label>MERN</label>
-        <input
-          type="checkbox"
-          name="MERN"
-          // value={props.description}
-          // onChange={(e) => props.handleChange(e)}
-        />
+        <p>Select a stack:</p>
+        {renderStackOptions()}
       </div>
-      <div>
-        <label>PERN</label>
-        <input
-          type="checkbox"
-          name="PERN"
-          // value={props.description}
-          // onChange={(e) => props.handleChange(e)}
-        />
-      </div>
-      <div>
-        <label>MEAN</label>
-        <input
-          type="checkbox"
-          name="MEAN"
-          // value={props.description}
-          // onChange={(e) => props.handleChange(e)}
-        />
-      </div>
-
-      <div>
-        <label>MEVN</label>
-        <input
-          type="checkbox"
-          name="MEVN"
-          // value={props.description}
-          // onChange={(e) => props.handleChange(e)}
-        />
-      </div>
-      <div>
-        <label>LAMP</label>
-        <input
-          type="checkbox"
-          name="LAMP"
-          // value={props.description}
-          // onChange={(e) => props.handleChange(e)}
-        />
-      </div>
-      <div>
-        <label>Serverless</label>
-        <input
-          type="checkbox"
-          name="LAMP"
-          // value={props.description}
-          // onChange={(e) => props.handleChange(e)}
-        />
-      </div>
-
-      <div>
-        <label>Python-Django</label>
-        <input
-          type="checkbox"
-          name="Python-Django"
-          // value={props.description}
-          // onChange={(e) => props.handleChange(e)}
-        />
-      </div>
+      {/* <div>
+        <p>or create your own stack:</p>
+        {renderCustomStackOptions()}
+      </div> */}
     </div>
   )
 }
