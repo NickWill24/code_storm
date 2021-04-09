@@ -3,8 +3,9 @@ import IdeaCard from './IdeaCard'
 import { connect } from 'react-redux'
 import {
   getIdeas,
-  selectIdea, 
-  // LikeIdea
+  selectIdea,
+  NumberOfLikes,
+  toggleSort
 } from '../store/actions/IdeaActions'
 
 const mapStateToProps = (state) => {
@@ -13,21 +14,21 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getIdeas: () => dispatch(getIdeas()), 
+    getIdeas: () => dispatch(getIdeas()),
     selectIdea: (id) => dispatch(selectIdea(id)),
-    // incrementLikeCount: (id) => dispatch(LikeIdea(id))
+    incrementLikeCount: (id) => dispatch(NumberOfLikes(id))
+    // toggleSort: () => dispatch(toggleSort())
   }
 }
 
 const IdeaList = (props) => {
-  const { ideas, getIdeas } = props.ideaState
+  const { ideas, getIdeas, sortByLikes } = props.ideaState
 
   useEffect(() => {
     props.getIdeas()
-  }, [props.getIdeas])
+  }, [getIdeas])
 
   const targetIdea = (id) => {
-    console.log('click', id)
     // SET SELECTED IDEA IN STATE
     props.selectIdea(id)
     // REDIRECT TO IDEA DETAILS PAGE
@@ -36,23 +37,35 @@ const IdeaList = (props) => {
 
   const likeIdea = (id) => {
     // INCREMENT LIKE COUNT
-    // props.incrementLikeCount(id)
+    props.incrementLikeCount(id)
+  }
+
+  const toggleSort = () => {
+    // TOGGLE SORT BY CREATEDAT || LIKES
   }
 
   const renderIdeas = () => {
     return ideas.length > 0 ? (
-      ideas.map((idea, idx) => (
-        <div onClick={() => likeIdea(idea.id)}>
-          <IdeaCard
+      ideas
+        .map((idea, idx) => (
+          <div
             key={idx}
-            title={idea.title}
-            description={idea.description}
-            stack={idea.stack}
-            id={idea.id}
-            handleClick={targetIdea}
-          />
-        </div>
-      ))
+            created_at={idea.created_at}
+            likes={idea.number_of_like}
+          >
+            <IdeaCard
+              title={idea.title}
+              description={idea.description}
+              stack={idea.stacks}
+              id={idea.id}
+              handleClick={targetIdea}
+              created_at={idea.created_at}
+              likes={idea.number_of_like}
+            />
+            <button onClick={() => likeIdea(idea.id)}>LIKE</button>
+          </div>
+        ))
+        .sort((a, b) => a.props.created_at < b.props.created_at)
     ) : (
       <p>...no ideas yet!</p>
     )
@@ -61,6 +74,12 @@ const IdeaList = (props) => {
   return (
     <div>
       <h3>IdeaList</h3>
+      <div>
+        <p>Sort ideas by:</p>
+        <button onClick={() => toggleSort()}>
+          {sortByLikes ? 'Popularity' : 'Recent'}
+        </button>
+      </div>
       {renderIdeas()}
     </div>
   )
