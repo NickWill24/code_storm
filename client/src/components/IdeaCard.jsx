@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/App.css'
 import {
   MERN,
   PERN,
@@ -30,7 +31,7 @@ const IdeaCard = (props) => {
     switch (stack) {
       case MERN:
         return (
-          <ul>
+          <ul className="stack__list">
             <Tag stack={_MongoDB} />
             <Tag stack={_Express} />
             <Tag stack={_React} />
@@ -89,11 +90,12 @@ const IdeaCard = (props) => {
     <div>
       {props ? (
         <div>
-          <h3>{title}</h3>
-          <p>{description}</p>
-          <div>{renderTags()}</div>
-          <p> {likes ? likes : 'no likes '}</p>
-          <button onClick={() => handleClick(id)}>View Details</button>
+          <h3 className="card__title">{title}</h3>
+          {/* <p className="card__description">{description}</p> */}
+          <button onClick={() => handleClick(id)} className="card__more">
+            View Details →
+          </button>
+          <div className="stack__wrapper">{renderTags()}</div>
         </div>
       ) : (
         <div>

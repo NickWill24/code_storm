@@ -15,7 +15,8 @@ import {
   REMOVE_IDEA,
   SELECT_IDEA,
   NUMBER_OF_LIKES,
-  IS_SUBMITED
+  IS_SUBMITED,
+  TOGGLE_SORT
 } from '../types'
 
 export const addTitle = (formValues) => ({
@@ -89,7 +90,6 @@ export const removeIdea = (id) => async (dispatch) => {
 export const NumberOfLikes = (id, likeCount) => async (dispatch) => {
   try {
     const likes = await numberOfLikes(id, likeCount)
-    console.log('num likes action id', id, likeCount)
 
     dispatch({ type: NUMBER_OF_LIKES, payload: id })
     return likes
@@ -97,3 +97,7 @@ export const NumberOfLikes = (id, likeCount) => async (dispatch) => {
     console.log(err)
   }
 }
+
+export const toggleSort = () => ({
+  type: TOGGLE_SORT
+})

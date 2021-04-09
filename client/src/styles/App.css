@@ -1,0 +1,122 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
+:root {
+  --xiketic: #181528ff;
+  --space-cadet: #2e294eff;
+  --arctic-lime: #e0ff4fff;
+  --platinum: #eadedaff;
+}
+
+html {
+  background-color: var(--space-cadet);
+  text-align: center;
+  color: var(--platinum);
+}
+
+* {
+  font-weight: 600;
+  letter-spacing: 0.01rem;
+  line-height: 1.6;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  background: var(--xiketic);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: space-between;
+  margin: 30px;
+}
+
+nav a,
+nav a:visited {
+  color: var(--platinum);
+  margin: 0 30px 0 0;
+  text-decoration: none;
+}
+
+main {
+  margin: 140px auto;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+}
+.bolt__logo::after {
+  content: '\f0e7';
+  font-family: FontAwesome;
+  color: var(--arctic-lime);
+  font-size: 30px;
+}
+
+.stack__wrapper ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: space-evenly;
+
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.stack__wrapper ul li {
+  font-size: 12px;
+
+  border: 0.5px solid var(--platinum);
+  border-radius: 10rem;
+  padding: 5px 16px;
+}
+
+.card__wrapper {
+  background-color: var(--xiketic);
+  max-width: 700px;
+  border-radius: 0.1rem;
+  margin: 30px auto;
+  min-height: 250px;
+  padding: 15px;
+}
+
+.card__description {
+  min-height: 100px;
+  padding: 20px;
+}
+
+.card__more {
+  margin: 30px 0;
+  background-color: transparent;
+  border: none;
+  color: var(--platinum);
+}
+
+.card__like {
+  position: absolute;
+  padding: 15px;
+  color: var(--arctic-lime);
+}
+
+.card__like button {
+  background-color: transparent;
+  border: none;
+  transition: transform 100ms ease-in;
+}
+
+.card__like button::after {
+  content: '\f0e7';
+  font-family: FontAwesome;
+  color: var(--arctic-lime);
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.card__like button:hover {
+  transform: scale(1.2);
+}

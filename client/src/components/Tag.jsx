@@ -1,7 +1,8 @@
 import React from 'react'
+import '../styles/App.css'
 
 const Tag = (props) => {
-  return <p>{props.stack ? props.stack : 'null'}</p>
+  return <li className="stack__item">{props.stack ? props.stack : 'null'}</li>
 }
 
 export default Tag

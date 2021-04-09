@@ -12,7 +12,8 @@ import {
   GET_IDEA,
   NUMBER_OF_LIKES,
   SELECT_IDEA,
-  IS_SUBMITED
+  IS_SUBMITED,
+  TOGGLE_SORT
 } from '../types'
 
 const iState = {
@@ -23,7 +24,8 @@ const iState = {
   numberOfLikes: 0,
   getIdea: [],
   selectIdea: 1,
-  isSubmited: false
+  isSubmited: false,
+  sortByLikes: true
 }
 const IdeaReducers = (state = iState, action) => {
   switch (action.type) {
@@ -55,6 +57,8 @@ const IdeaReducers = (state = iState, action) => {
       return { ...state, ideas: action.payload }
     case GET_IDEA:
       return { ...state, getIdea: action.payload }
+    case TOGGLE_SORT:
+      return { ...state, sortByLikes: !state.sortByLikes }
     default:
       return { ...state }
   }

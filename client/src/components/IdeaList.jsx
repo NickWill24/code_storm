@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import IdeaCard from './IdeaCard'
 import { connect } from 'react-redux'
+import '../styles/App.css'
 import {
   getIdeas,
   selectIdea,
@@ -16,8 +17,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getIdeas: () => dispatch(getIdeas()),
     selectIdea: (id) => dispatch(selectIdea(id)),
-    incrementLikeCount: (id, likes) => dispatch(NumberOfLikes(id, likes))
-    // toggleSort: () => dispatch(toggleSort())
+    incrementLikeCount: (id, likes) => dispatch(NumberOfLikes(id, likes)),
+    toggleSort: () => dispatch(toggleSort())
   }
 }
 
@@ -43,6 +44,7 @@ const IdeaList = (props) => {
 
   const toggleSort = () => {
     // TOGGLE SORT BY CREATEDAT || LIKES
+    props.toggleSort()
   }
 
   const renderIdeas = () => {
@@ -53,7 +55,14 @@ const IdeaList = (props) => {
             key={idx}
             created_at={idea.created_at}
             likes={idea.number_of_like}
+            className="card__wrapper"
           >
+            <div className="card__like">
+              <button
+                onClick={() => likeIdea(idea.id, idea.number_of_like)}
+              ></button>
+              <span>{idea.number_of_like}</span>
+            </div>
             <IdeaCard
               title={idea.title}
               description={idea.description}
@@ -63,13 +72,13 @@ const IdeaList = (props) => {
               created_at={idea.created_at}
               likes={idea.number_of_like}
             />
-            <button onClick={() => likeIdea(idea.id, idea.number_of_like)}>
-              ⚡️
-            </button>
-            <span>{idea.number_of_like}</span>
           </div>
         ))
-        .sort((a, b) => a.props.created_at < b.props.created_at)
+        .sort((a, b) =>
+          sortByLikes
+            ? a.props.likes < b.props.likes
+            : a.props.created_at < b.props.created_at
+        )
     ) : (
       <p>...no ideas yet!</p>
     )
@@ -81,7 +90,7 @@ const IdeaList = (props) => {
       <div>
         <p>Sort ideas by:</p>
         <button onClick={() => toggleSort()}>
-          {sortByLikes ? 'Popularity' : 'Recent'}
+          {sortByLikes ? 'Recent' : 'Popular'}
         </button>
       </div>
       {renderIdeas()}
