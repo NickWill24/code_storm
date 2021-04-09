@@ -1,7 +1,8 @@
 import React from 'react'
 import IdeaCard from './IdeaCard'
 import { connect } from 'react-redux'
-import { GetIdeas } from '../store/actions/GetIdeas'
+import { GetIdeas, SelectIdea } from '../store/actions'
+// AXIOS CALL FOR ALL IDEAS
 
 const mapStateToProps = (state) => {
   return { ideaState: state.ideaState }
@@ -9,16 +10,32 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getIdeas: () => dispatch(GetIdeas())
+    getIdeas: () => dispatch(GetIdeas()),
+    selectIdea: (id) => dispatch(SelectIdea(id))
   }
 }
 
 const IdeaList = (props) => {
   const { ideas } = props.ideaState
 
+  const handleClick = (e, id) => {
+    // SET SELECTED IDEA IN STATE
+    props.selectIdea(id)
+    // REDIRECT TO IDEA DETAILS PAGE
+    props.history.push(`/idea/${id}`)
+  }
+
   const renderIdeas = () => {
     return ideas
-      ? ideas.map((idea) => <IdeaCard title={idea.title} />)
+      ? ideas.map((idea, idx) => (
+          <IdeaCard
+            key={idx}
+            title={idea.title}
+            description={idea.description}
+            stack={idea.stack}
+            handleClick={handleClick}
+          />
+        ))
       : '...no ideas yet!'
   }
 
