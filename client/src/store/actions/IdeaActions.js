@@ -14,7 +14,8 @@ import {
   GET_IDEAS,
   REMOVE_IDEA,
   SELECT_IDEA,
-  NUMBER_OF_LIKES
+  NUMBER_OF_LIKES,
+  IS_SUBMITED
 } from '../types'
 
 export const addTitle = (formValues) => ({
@@ -29,6 +30,11 @@ export const addDescription = (formValues) => ({
 
 export const addStacks = (formValues) => ({
   type: ADD_STACKS,
+  payload: formValues
+})
+
+export const isSubmited = (formValues) => ({
+  type: IS_SUBMITED,
   payload: formValues
 })
 
@@ -53,7 +59,7 @@ export const getIdea = (id) => async (dispatch) => {
     const idea = await GetIdea(id)
     dispatch({
       type: GET_IDEA,
-      payload: idea
+      payload: idea.data
     })
   } catch (error) {}
 }
@@ -74,7 +80,8 @@ export const removeIdea = (id) => async (dispatch) => {
   try {
     const idea = await RemoveIdea(id)
     dispatch({
-      type: REMOVE_IDEA
+      type: REMOVE_IDEA,
+      payload: id
     })
   } catch (error) {
     throw error

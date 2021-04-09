@@ -8,3 +8,4 @@ export const ADD_STACKS="ADD_STACKS"
 export const GET_IDEA= 'GET_IDEA'
 export const NUMBER_OF_LIKES= 'NUMBER_OF_LIKES'
 export const SELECT_IDEA='SELECT_IDEA'
+export const IS_SUBMITED='IS_SUBMITED'

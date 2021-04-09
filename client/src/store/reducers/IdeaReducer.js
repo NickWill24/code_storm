@@ -2,7 +2,7 @@
 // define istate
 // define reduces
 
-import { GET_IDEAS, ADD_DESCRIPTION, ADD_TITLE, ADD_STACKS, CREATE_IDEA, REMOVE_IDEA, GET_IDEA, NUMBER_OF_LIKES, SELECT_IDEA } from "../types"
+import { GET_IDEAS, ADD_DESCRIPTION, ADD_TITLE, ADD_STACKS, CREATE_IDEA, REMOVE_IDEA, GET_IDEA, NUMBER_OF_LIKES, SELECT_IDEA, IS_SUBMITED } from "../types"
 
 const iState={
     ideas:[],
@@ -11,14 +11,20 @@ const iState={
     description:'',
     numberOfLikes: 0,
     getIdea:[],
-    selectIdea: 0,
+    selectIdea: 1,
+    isSubmited: false
 }
 const IdeaReducers= (state= iState, action) => {
     switch(action.type) {
         case CREATE_IDEA: 
             return{...state, title:'', description:''}
         case REMOVE_IDEA:
-            return {...state}
+            const deleted = state.ideas.filter((idea) => idea.id === action.payload)
+            let remaining = state.ideas.filter((idea) => idea.id !== deleted[0].id)
+            return {
+            ...state,
+            ideas: [...remaining],
+            }
         case ADD_TITLE:
             return{...state, title: action.payload}
         case ADD_STACKS:
@@ -32,10 +38,12 @@ const IdeaReducers= (state= iState, action) => {
             return{...state}
         case SELECT_IDEA:
             return{...state, selectIdea: action.payload}
+        case IS_SUBMITED:
+            return{...state}
         case GET_IDEAS:
             return{...state, ideas: action.payload}
         case  GET_IDEA:
-            return{...state, idea: action.payload}
+            return{...state, getIdea: action.payload}
             default:
                 return{...state }
     }
