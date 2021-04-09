@@ -9,8 +9,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getIdea: () => dispatch(getIdea()),
-    deleteIdea: (id) => dispatch(removeIdea(id))
+    getIdea: (id) => dispatch(getIdea(id)),
+    removeIdea: (id) => dispatch(removeIdea(id))
   }
 }
 
@@ -20,21 +20,24 @@ const IdeaDetails = (props) => {
   const renderTags = () =>
     stack ? stack.map((tag, idx) => <Tag key={idx} tag={tag} />) : 'no tags'
 
-  const handleClick = (id) => props.deleteIdea(id)
-
+  const handleClick = (id) => {
+    props.removeIdea(id)
+    console.log(props)
+  }
   useEffect(() => {
-    props.getIdea()
+    props.getIdea(props.ideaState.selectIdea)
+    console.log(props.ideaState.getIdea)
   }, [])
 
   return (
     <div>
-      {props ? (
+      {props.ideaState.getIdea ? (
         <div>
           <h4>IdeaDetails</h4>
           <p>{title}</p>
           <p>{description}</p>
           <div>{renderTags()}</div>
-          <button onClick={(e) => handleClick(e, id)}>
+          <button onClick={() => handleClick(id)}>
             Delete This Idea Now
           </button>
         </div>

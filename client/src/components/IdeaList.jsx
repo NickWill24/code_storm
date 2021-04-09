@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import IdeaCard from './IdeaCard'
 import { connect } from 'react-redux'
 import {
-  getIdeas
-  // SelectIdea, LikeIdea
+  getIdeas,
+  selectIdea, 
+  // LikeIdea
 } from '../store/actions/IdeaActions'
 
 const mapStateToProps = (state) => {
@@ -12,8 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getIdeas: () => dispatch(getIdeas())
-    // selectIdea: (id) => dispatch(SelectIdea(id)),
+    getIdeas: () => dispatch(getIdeas()), 
+    selectIdea: (id) => dispatch(selectIdea(id)),
     // incrementLikeCount: (id) => dispatch(LikeIdea(id))
   }
 }
@@ -26,8 +27,9 @@ const IdeaList = (props) => {
   }, [props.getIdeas])
 
   const targetIdea = (id) => {
+    console.log('click', id)
     // SET SELECTED IDEA IN STATE
-    // props.selectIdea(id)
+    props.selectIdea(id)
     // REDIRECT TO IDEA DETAILS PAGE
     props.history.push(`/idea/${id}`)
   }
@@ -46,6 +48,7 @@ const IdeaList = (props) => {
             title={idea.title}
             description={idea.description}
             stack={idea.stack}
+            id={idea.id}
             handleClick={targetIdea}
           />
         </div>
