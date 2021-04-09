@@ -3,7 +3,7 @@ import Tag from './Tag'
 import { connect } from 'react-redux'
 import { getIdea, removeIdea } from '../store/actions/IdeaActions'
 import { NavLink } from 'react-router-dom'
-
+import "../styles/IdeaCard.css"
 const mapStateToProps = (state) => {
   return { ideaState: state.ideaState }
 }
@@ -32,12 +32,12 @@ const IdeaDetails = (props) => {
     <div>
       {props.ideaState.getIdea ? (
         <div>
-          <h4>IdeaDetails</h4>
+          <h4 className="title">IdeaDetails</h4>
           <p>{title}</p>
           <p>{description}</p>
-          <div>{renderTags()}</div>
+          <div className='title'>{renderTags()}</div>
           <NavLink to="/">
-            <button onClick={() => handleClick(id)}>
+            <button className='butn' onClick={() => handleClick(id)}>
               Delete This Idea Now
             </button>
           </NavLink>

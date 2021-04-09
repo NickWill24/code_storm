@@ -25,6 +25,7 @@ CodeStorm is a flask, redux, and react full stack application
 
 ![CodeStorm ERD](images/ERD.png)
 ![CodeStorm Component Hierarchy Diagram](images/CHR.png)
+![CodeStormFinal](images/finalproduct.png)
 
 ***
 ### ***Future Updates***

@@ -1,0 +1,18 @@
+:root {
+    --xiketic: #181528ff;
+    --space-cadet: #2e294eff;
+    --arctic-lime: #e0ff4fff;
+    --platinum: #eadedaff;
+}
+
+.butn{
+    background-color: var(--arctic-lime);
+    width: 200px;
+    height: 100px;
+    margin: 75px;
+}
+
+.title{
+    color: var(--arctic-lime);
+    font-size: x-large;
+}
