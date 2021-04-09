@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Tag = () => {
-  return <p>Tag</p>
+const Tag = (props) => {
+  return <p>{props.stack ? props.stack : 'null'}</p>
 }
 
 export default Tag

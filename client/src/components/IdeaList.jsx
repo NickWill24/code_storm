@@ -3,7 +3,7 @@ import IdeaCard from './IdeaCard'
 import { connect } from 'react-redux'
 import {
   getIdeas,
-  selectIdea, 
+  selectIdea
   // LikeIdea
 } from '../store/actions/IdeaActions'
 
@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getIdeas: () => dispatch(getIdeas()), 
-    selectIdea: (id) => dispatch(selectIdea(id)),
+    getIdeas: () => dispatch(getIdeas()),
+    selectIdea: (id) => dispatch(selectIdea(id))
     // incrementLikeCount: (id) => dispatch(LikeIdea(id))
   }
 }
@@ -42,12 +42,11 @@ const IdeaList = (props) => {
   const renderIdeas = () => {
     return ideas.length > 0 ? (
       ideas.map((idea, idx) => (
-        <div onClick={() => likeIdea(idea.id)}>
+        <div onClick={() => likeIdea(idea.id)} key={idx}>
           <IdeaCard
-            key={idx}
             title={idea.title}
             description={idea.description}
-            stack={idea.stack}
+            stack={idea.stacks}
             id={idea.id}
             handleClick={targetIdea}
           />
