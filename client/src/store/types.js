@@ -7,3 +7,4 @@ export const ADD_DESCRIPTION="ADD_DESCRIPTION"
 export const ADD_STACKS="ADD_STACKS"
 export const GET_IDEA= 'GET_IDEA'
 export const NUMBER_OF_LIKES= 'NUMBER_OF_LIKES'
+export const SELECT_IDEA='SELECT_IDEA'

@@ -35,6 +35,20 @@ export const RemoveIdea = async (id) => {
     throw error
   }
 }
+
+export const numberOfLikes = async (idea_id) => {
+  let input = {
+    numberOfLikes: numberOfLikes +1
+  }
+  try {
+    const res = await Client.put(`/ideas/${idea_id}`, input)
+    return res.data
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+
 // export const UpdateIdeas = async (id) => {
 //     try {
 //         const res = await Client.put(`/ideas/${id}`)
