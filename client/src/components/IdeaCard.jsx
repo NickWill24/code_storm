@@ -15,7 +15,7 @@ const IdeaCard = (props) => {
           <p>{title}</p>
           <p>{description}</p>
           <div>{renderTags()}</div>
-          <button onClick={(e) => handleClick(e, id)}>View Details</button>
+          <button onClick={() => handleClick(id)}>View Details</button>
         </div>
       ) : (
         <div>

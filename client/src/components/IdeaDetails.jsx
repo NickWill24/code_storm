@@ -1,7 +1,7 @@
 import React from 'react'
 import Tag from './Tag'
 import { connect } from 'react-redux'
-import { GetIdeas, SelectIdea } from '../store/actions'
+import { GetIdea, SelectIdea } from '../store/actions'
 
 const mapStateToProps = (state) => {
   return { ideaState: state.ideaState }
@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getIdeas: () => dispatch(GetIdeas()),
+    getIdea: () => dispatch(GetIdea()),
     deleteIdea: (id) => dispatch(SelectIdea(id))
   }
 }
@@ -21,6 +21,8 @@ const IdeaDetails = (props) => {
     stack ? stack.map((tag, idx) => <Tag key={idx} tag={tag} />) : 'no tags'
 
   const handleClick = (id) => props.deleteIdea(id)
+
+  // ADD USEFFECT
 
   return (
     <div>
