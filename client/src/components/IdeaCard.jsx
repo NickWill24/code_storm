@@ -24,7 +24,7 @@ import {
 import Tag from './Tag'
 
 const IdeaCard = (props) => {
-  const { stack, title, description, handleClick, id } = props
+  const { stack, title, description, handleClick, id, likes } = props
 
   const renderTags = () => {
     switch (stack) {
@@ -92,6 +92,7 @@ const IdeaCard = (props) => {
           <h3>{title}</h3>
           <p>{description}</p>
           <div>{renderTags()}</div>
+          <p> {likes ? likes : 'no likes '}</p>
           <button onClick={() => handleClick(id)}>View Details</button>
         </div>
       ) : (

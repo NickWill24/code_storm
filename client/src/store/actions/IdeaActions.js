@@ -43,7 +43,6 @@ export const selectIdea = (formValues) => ({
   payload: formValues
 })
 
-
 export const getIdeas = () => async (dispatch) => {
   try {
     const ideas = await GetIdeas()
@@ -87,10 +86,11 @@ export const removeIdea = (id) => async (dispatch) => {
     throw error
   }
 }
-export const NumberOfLikes = (id, index) => async (dispatch) => {
+export const NumberOfLikes = (id, likes) => async (dispatch) => {
   try {
-    const likes = await numberOfLikes(id)
-    dispatch({ type: NUMBER_OF_LIKES, payload: { id: id, index: index } })
+    console.log('num likes action id', id, likes)
+    const likes = await numberOfLikes(id, likes)
+    dispatch({ type: NUMBER_OF_LIKES, payload: id })
     return likes
   } catch (err) {
     console.log(err)

@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getIdeas: () => dispatch(getIdeas()),
     selectIdea: (id) => dispatch(selectIdea(id)),
-    incrementLikeCount: (id) => dispatch(NumberOfLikes(id))
+    incrementLikeCount: (id, likes) => dispatch(NumberOfLikes(id, likes))
     // toggleSort: () => dispatch(toggleSort())
   }
 }
@@ -35,9 +35,9 @@ const IdeaList = (props) => {
     props.history.push(`/idea/${id}`)
   }
 
-  const likeIdea = (id) => {
+  const likeIdea = (id, likes) => {
     // INCREMENT LIKE COUNT
-    props.incrementLikeCount(id)
+    props.incrementLikeCount(id, likes)
   }
 
   const toggleSort = () => {
@@ -62,7 +62,10 @@ const IdeaList = (props) => {
               created_at={idea.created_at}
               likes={idea.number_of_like}
             />
-            <button onClick={() => likeIdea(idea.id)}>LIKE</button>
+            <button onClick={() => likeIdea(idea.id, idea.number_of_like)}>
+              ⚡️
+            </button>
+            <span>{idea.number_of_like}</span>
           </div>
         ))
         .sort((a, b) => a.props.created_at < b.props.created_at)
