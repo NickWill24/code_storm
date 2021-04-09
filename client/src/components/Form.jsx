@@ -54,10 +54,13 @@ const Form = (props) => {
         <div>test</div>
       ) : (
         <div>
-          <h3>Form</h3>
+          <h2 className="form__title">
+            Submit your cool fullstack project idea.
+          </h2>
+
           <form onSubmit={(e) => handleSubmit(e)}>
             <div>
-              <label>Project title</label>
+              <h3>Project title</h3>
               <input
                 type="text"
                 name="title"
@@ -67,7 +70,7 @@ const Form = (props) => {
               />
             </div>
             <div>
-              <label>Description</label>
+              <h3>Description</h3>
               <textarea
                 type="text"
                 name="description"
@@ -78,7 +81,13 @@ const Form = (props) => {
             </div>
             <StackList handleChange={(e) => handleChange(e)} stack={stacks} />
 
-            <input type="submit" value="Submit Idea" className="idea__submit" />
+            <button
+              type="submit"
+              value="::placeholder"
+              className="idea__submit"
+            >
+              Submit
+            </button>
           </form>
         </div>
       )}

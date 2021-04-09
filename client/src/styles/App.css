@@ -23,8 +23,10 @@ nav {
   top: 0;
   right: 0;
   left: 0;
+  z-index: 10;
 
   background: var(--xiketic);
+  border-bottom: 1px solid var(--space-cadet);
 }
 
 nav ul {
@@ -62,10 +64,11 @@ main {
   list-style: none;
   display: flex;
   flex-direction: row nowrap;
-  justify-content: space-evenly;
-
+  justify-content: flex-start;
+  border-top: 1px solid var(--space-cadet);
   max-width: 600px;
   margin: 0 auto;
+  padding: 20px 0 0 0;
 }
 
 .stack__wrapper ul li {
@@ -74,6 +77,7 @@ main {
   border: 0.5px solid var(--platinum);
   border-radius: 10rem;
   padding: 5px 16px;
+  margin: 10px 20px 0 0;
 }
 
 .card__wrapper {
@@ -81,8 +85,12 @@ main {
   max-width: 700px;
   border-radius: 0.1rem;
   margin: 30px auto;
-  min-height: 250px;
-  padding: 15px;
+  min-height: 200px;
+  padding: 30px 20px 30px 20px;
+}
+
+.card__title {
+  font-size: 27px;
 }
 
 .card__description {
@@ -94,7 +102,9 @@ main {
   margin: 30px 0;
   background-color: transparent;
   border: none;
+  font-size: 16px;
   color: var(--platinum);
+  cursor: pointer;
 }
 
 .card__like {
@@ -119,4 +129,41 @@ main {
 
 .card__like button:hover {
   transform: scale(1.2);
+}
+
+textarea {
+  padding: 30px;
+  width: 400px;
+  background-color: var(--platinum);
+  border: 1px solid var(--space-cadet);
+}
+
+form {
+  width: 500px;
+  margin: 0 auto;
+}
+
+form input::placeholder,
+textarea::placeholder {
+  font-size: 15px;
+}
+
+form input {
+  margin: 20px;
+  padding: 30px;
+  min-width: 250px;
+  background-color: var(--platinum);
+  border: 1px solid var(--space-cadet);
+}
+
+form label {
+  display: block-inline;
+}
+
+.form__title {
+  margin: 0 0 80px 0;
+}
+
+.dashboard__title {
+  margin: 0 0 180px 0;
 }
