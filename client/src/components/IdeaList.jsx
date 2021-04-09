@@ -86,9 +86,8 @@ const IdeaList = (props) => {
 
   return (
     <div>
-      <h3>IdeaList</h3>
       <div>
-        <p>Sort ideas by:</p>
+        <span>Sort ideas by:</span>
         <button onClick={() => toggleSort()}>
           {sortByLikes ? 'Recent' : 'Popular'}
         </button>
