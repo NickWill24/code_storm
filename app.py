@@ -7,6 +7,7 @@ from resources.idea import Ideas, SingleIdea
 from flask_cors import CORS
 import os
 
+
 app = Flask(__name__)
 cors = CORS(app)
 api = Api(app)
